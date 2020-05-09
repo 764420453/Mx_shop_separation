@@ -39,6 +39,13 @@ INSTALLED_APPS = [
     # 富文本编辑器
     'DjangoUeditor',
 
+
+    'users',
+    'goods',
+    'trade',
+    'user_operation',
+
+
 ]
 
 MIDDLEWARE = [
