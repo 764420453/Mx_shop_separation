@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     # xadmin的使用
     'xadmin',
     'crispy_forms',
+    # 富文本编辑器
+    'DjangoUeditor',
 
 ]
 
