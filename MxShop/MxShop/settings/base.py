@@ -144,3 +144,8 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+AUTH_USER_MODEL='users.UserProfile'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
