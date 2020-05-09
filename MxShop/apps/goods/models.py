@@ -1,5 +1,7 @@
 from datetime import datetime
 from django.db import models
+
+
 from DjangoUeditor.models import UEditorField
 
 
@@ -65,8 +67,10 @@ class Goods(models.Model):
     market_price = models.FloatField("市场价格",default=0)
     shop_price = models.FloatField("本店价格",default=0)
     goods_brief = models.TextField("商品简短描述",max_length=500)
-    goods_desc = UEditorField(verbose_name=u"内容", imagePath="goods/images/", width=1000, height=300,
-                              filePath="goods/files/", default='')
+    goods_desc=UEditorField(verbose_name='内容',imagePath='goods/images/',width=860,height=300,filePath='goods/files/',default='')
+
+
+
     ship_free = models.BooleanField("是否承担运费",default=True)
     # 首页中展示的商品封面图
     goods_front_image = models.ImageField(upload_to="goods/images/", null=True, blank=True, verbose_name="封面图")
