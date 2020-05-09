@@ -31,6 +31,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
+    # xadmin的使用
+    'xadmin',
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
