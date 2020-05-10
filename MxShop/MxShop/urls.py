@@ -13,15 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
-from django.contrib import admin
-from django.urls import path,include,re_path
-from django.views.static import serve
-from rest_framework.documentation import include_docs_urls
-
-from MxShop.settings.base import MEDIA_ROOT
+from rest_framework_jwt.views import obtain_jwt_token
 
 import xadmin
+from django.contrib import admin
+from django.urls import path,include,re_path
+from MxShop.settings.base import MEDIA_ROOT
+from django.views.static import serve
+from rest_framework.documentation import include_docs_urls
+from rest_framework.authtoken import views
+
+
 
 
 
@@ -43,8 +45,11 @@ urlpatterns = [
     re_path(r'^',include('goods.urls')),
     # re_path(r'^',include('users.urls',namespace='users')),
 
+    # 用户认证
+    re_path(r'^api-token-auth/', views.obtain_auth_token),
 
-
+    # jwt认证
+    path('login/', obtain_jwt_token),
 
 
 ]

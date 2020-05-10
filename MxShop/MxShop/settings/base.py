@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'django_filters',
     # 解决跨域问题
     'corsheaders',
-
+    # 认证
+    'rest_framework.authtoken',
 
 
     
@@ -166,6 +167,8 @@ AUTH_USER_MODEL='users.UserProfile'
 MEDIA_URL="/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+
+
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 
@@ -174,10 +177,26 @@ REST_FRAMEWORK = {
     # 'PAGE_SIZE': 10,
 
     # 过滤
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 
-
+    # 认证
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ],
 
 
 }
 
+# 用户认证
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+
+)
+import datetime
+#有效期限
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),    #也可以设置seconds=20
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',                       #JWT跟前端保持一致，比如“token”这里设置成JWT
+}
