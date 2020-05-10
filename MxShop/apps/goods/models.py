@@ -59,7 +59,7 @@ class Goods(models.Model):
     """
     category = models.ForeignKey(GoodsCategory, on_delete=models.CASCADE, verbose_name="商品类目")
     goods_sn = models.CharField("商品唯一货号",max_length=50, default="")
-    name = models.CharField("商品名",max_length=100,)
+    name = models.CharField("商品名",max_length=100)
     click_num = models.IntegerField("点击数",default=0)
     sold_num = models.IntegerField("商品销售量",default=0)
     fav_num = models.IntegerField("收藏数",default=0)
